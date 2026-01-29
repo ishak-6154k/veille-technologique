@@ -16,7 +16,8 @@
 depuis 3ans, je connais Word et un peu Exel. J'ai déjà crée le tout début d'un site. ####
 #### Projet Professionnel : BAC +5, Ingernieur en Cybersécurité ####
 ### Veille technologique : Le passage au modèle ZTNA (Zero Trust Network Access) ###
-#### Le modèle traditionnel de sécurité périmétrique (« château fort ») 
+#### 
+Le modèle traditionnel de sécurité périmétrique (« château fort ») 
 est devenu insuffisant avec la généralisation du Cloud et du travail hybride. 
 Le ZTNA repose sur un principe simple : « ne jamais faire confiance, toujours vérifier ». 
 Contrairement au VPN classique, il n'accorde l'accès qu'après une vérification stricte de l'identité de l'utilisateur
