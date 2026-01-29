@@ -12,8 +12,7 @@
 #### Mail personnel : k.sharki6154@gmail.com ####
 #### Pourquoi avoir choisi le BTS-SIO de L'Ensitech : Ce que je souhaite faire. ####
 #### Travaillez-vous en dehors des cours : OUI ####
-####
-Quelles connaissances ou compétences en informatique avez-vous ? : J'ai pratiqué le langage python 
+#### Quelles connaissances ou compétences en informatique avez-vous ? : J'ai pratiqué le langage python 
 depuis 3ans, je connais Word et un peu Exel. J'ai déjà crée le tout début d'un site. ####
 
 #### Projet Professionnel : BAC +5, Ingernieur en Cybersécurité ####
