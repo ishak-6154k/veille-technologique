@@ -23,4 +23,5 @@ est devenu insuffisant avec la généralisation du Cloud et du travail hybride.
 Le ZTNA repose sur un principe simple : « ne jamais faire confiance, toujours vérifier ». 
 Contrairement au VPN classique, il n'accorde l'accès qu'après une vérification stricte de l'identité de l'utilisateur
 et de l'état de son appareil, quel que soit l'endroit où il se trouve. En tant qu'étudiant en SISR, 
-je suis l'évolution de ce modèle qui redéfinit l'administration des infrastructures réseaux modernes. ####
+je suis l'évolution de ce modèle qui redéfinit l'administration des infrastructures réseaux modernes.
+####
