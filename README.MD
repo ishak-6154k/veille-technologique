@@ -25,6 +25,7 @@ recommandations de l'ANSSI pour préparer la migration des infrastructures
 (VPN, certificats SSL/TLS) vers des algorithmes dits « résistants au quantique ».
 ###
 
+'''mermaid
 graph TD
     A[Ordinateur Quantique Mature] -->|Menace| B(Algorithmes Actuels)
     B --> C{Cassés par Shor}
@@ -35,3 +36,4 @@ graph TD
     G --> H[Solution : Doubler la taille des clés]
     D & E --> I[Solution : Migration PQC]
     I --> J[Lattice-based / Hash-based]
+'''
