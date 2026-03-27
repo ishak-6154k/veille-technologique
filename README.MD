@@ -37,7 +37,7 @@ graph TD
     D & E --> I[Solution : Migration PQC]
     I --> J[Lattice-based / Hash-based]
 ```
-## ⚖️ Analyse de l'impact Quantique
+## Analyse de l'impact Quantique
 
 Le schéma ci-dessus illustre la dualité de la menace quantique sur nos standards actuels. Ma veille se concentre sur deux axes majeurs de remédiation :
 
@@ -53,7 +53,7 @@ Contrairement à RSA, les algorithmes symétriques comme **AES** et les fonction
 
 ---
 
-## 🛡️ Stratégie de Transition (Recommandations ANSSI)
+## Stratégie de Transition (Recommandations ANSSI)
 L'ANSSI préconise une phase de transition dite **"Hybride"**. Cette approche consiste à combiner :
 1.  Un algorithme de sécurité classique (ex: **ECDH**) pour assurer une protection contre les menaces d'aujourd'hui.
 2.  Un algorithme post-quantique (ex: **ML-KEM / Kyber**) pour se protéger contre les futures menaces quantiques.
