@@ -24,3 +24,14 @@ sécurisés contre les ordinateurs classiques et quantiques. Je m'intéresse par
 recommandations de l'ANSSI pour préparer la migration des infrastructures 
 (VPN, certificats SSL/TLS) vers des algorithmes dits « résistants au quantique ».
 ###
+
+graph TD
+    A[Ordinateur Quantique Mature] -->|Menace| B(Algorithmes Actuels)
+    B --> C{Cassés par Shor}
+    C --> D[RSA - Chiffrement]
+    C --> E[ECC - Signatures/Clés]
+    B --> F{Affaiblis par Grover}
+    F --> G[AES / SHA-3]
+    G --> H[Solution : Doubler la taille des clés]
+    D & E --> I[Solution : Migration PQC]
+    I --> J[Lattice-based / Hash-based]
