@@ -37,3 +37,28 @@ graph TD
     D & E --> I[Solution : Migration PQC]
     I --> J[Lattice-based / Hash-based]
 ```
+## ⚖️ Analyse de l'impact Quantique
+
+Le schéma ci-dessus illustre la dualité de la menace quantique sur nos standards actuels. Ma veille se concentre sur deux axes majeurs de remédiation :
+
+### 1. La fin de la Cryptographie Asymétrique (Shor)
+L'algorithme de Shor rend caduques les méthodes basées sur la factorisation (RSA) et le logarithme discret (ECC). 
+* **Risque :** Interception et déchiffrement rétroactif des communications ("Harvest Now, Decrypt Later").
+* **Réponse :** Migration vers des algorithmes de **Cryptographie Post-Quantique (PQC)**, principalement basés sur les réseaux euclidiens (Lattices), qui résistent aux attaques de Shor.
+
+### 2. La résistance de la Cryptographie Symétrique (Grover)
+Contrairement à RSA, les algorithmes symétriques comme **AES** et les fonctions de hachage comme **SHA-3** ne sont pas totalement brisés, mais "affaiblis" par l'algorithme de Grover.
+* **Risque :** Division par deux de la sécurité effective (un AES-128 ne fournirait plus que 64 bits de sécurité).
+* **Réponse :** Utilisation systématique de clés plus longues (**AES-256**) pour maintenir un niveau de sécurité post-quantique acceptable.
+
+---
+
+## 🛡️ Stratégie de Transition (Recommandations ANSSI)
+L'ANSSI préconise une phase de transition dite **"Hybride"**. Cette approche consiste à combiner :
+1.  Un algorithme de sécurité classique (ex: **ECDH**) pour assurer une protection contre les menaces d'aujourd'hui.
+2.  Un algorithme post-quantique (ex: **ML-KEM / Kyber**) pour se protéger contre les futures menaces quantiques.
+
+*L'objectif est de garantir que la sécurité globale est au moins égale à la plus forte des deux méthodes.*
+
+
+
