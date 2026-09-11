@@ -25,40 +25,142 @@ recommandations de l'ANSSI pour préparer la migration des infrastructures
 (VPN, certificats SSL/TLS) vers des algorithmes dits « résistants au quantique ».
 ###
 
-```mermaid
-graph TD
-    A[Ordinateur Quantique Mature] -->|Menace| B(Algorithmes Actuels)
-    B --> C{Cassés par Shor}
-    C --> D[RSA - Chiffrement]
-    C --> E[ECC - Signatures/Clés]
-    B --> F{Affaiblis par Grover}
-    F --> G[AES / SHA-3]
-    G --> H[Solution : Doubler la taille des clés]
-    D & E --> I[Solution : Migration PQC]
-    I --> J[Lattice-based / Hash-based]
-```
-## Analyse de l'impact Quantique
+import csv
+from collections import Counter
 
-Le schéma ci-dessus illustre la dualité de la menace quantique sur nos standards actuels. Ma veille se concentre sur deux axes majeurs de remédiation :
+FICHIER = "donnees_quotidiennes.csv"
 
-### 1. La fin de la Cryptographie Asymétrique (Shor)
-L'algorithme de Shor rend caduques les méthodes basées sur la factorisation (RSA) et le logarithme discret (ECC). 
-* **Risque :** Interception et déchiffrement rétroactif des communications ("Harvest Now, Decrypt Later").
-* **Réponse :** Migration vers des algorithmes de **Cryptographie Post-Quantique (PQC)**, principalement basés sur les réseaux euclidiens (Lattices), qui résistent aux attaques de Shor.
 
-### 2. La résistance de la Cryptographie Symétrique (Grover)
-Contrairement à RSA, les algorithmes symétriques comme **AES** et les fonctions de hachage comme **SHA-3** ne sont pas totalement brisés, mais "affaiblis" par l'algorithme de Grover.
-* **Risque :** Division par deux de la sécurité effective (un AES-128 ne fournirait plus que 64 bits de sécurité).
-* **Réponse :** Utilisation systématique de clés plus longues (**AES-256**) pour maintenir un niveau de sécurité post-quantique acceptable.
+def charger_donnees():
+    donnees = []
 
----
+    try:
+        with open(FICHIER, "r", encoding="utf-8") as fichier:
+            lecteur = csv.DictReader(fichier)
 
-## Stratégie de Transition (Recommandations ANSSI)
-L'ANSSI préconise une phase de transition dite **"Hybride"**. Cette approche consiste à combiner :
-1.  Un algorithme de sécurité classique (ex: **ECDH**) pour assurer une protection contre les menaces d'aujourd'hui.
-2.  Un algorithme post-quantique (ex: **ML-KEM / Kyber**) pour se protéger contre les futures menaces quantiques.
+            for ligne in lecteur:
+                donnees.append(ligne)
 
-*L'objectif est de garantir que la sécurité globale est au moins égale à la plus forte des deux méthodes.*
+    except FileNotFoundError:
+        print(f"Erreur : le fichier {FICHIER} est introuvable.")
+        return []
+
+    return donnees
+
+
+def afficher_resume(donnees):
+    if not donnees:
+        return
+
+    print("\n" + "=" * 60)
+    print("       ANALYSE DES DONNÉES D'UN SMARTPHONE")
+    print("=" * 60)
+
+    print(f"\nNombre d'événements analysés : {len(donnees)}")
+
+    # Types de données
+    types = Counter(d["type_donnee"] for d in donnees)
+
+    print("\n--- TYPES DE DONNÉES COLLECTÉES ---")
+
+    for type_donnee, nombre in types.items():
+        print(f"{type_donnee:<25} : {nombre}")
+
+    # Applications
+    applications = Counter(d["application"] for d in donnees)
+
+    print("\n--- APPLICATIONS CONCERNÉES ---")
+
+    for application, nombre in applications.items():
+        print(f"{application:<25} : {nombre}")
+
+    # Niveau de sensibilité
+    sensibilite = Counter(d["sensibilite"] for d in donnees)
+
+    print("\n--- SENSIBILITÉ DES DONNÉES ---")
+
+    for niveau, nombre in sensibilite.items():
+        print(f"{niveau:<25} : {nombre}")
+
+    # Données sensibles
+    sensibles = [
+        d for d in donnees
+        if d["sensibilite"].lower() == "élevée"
+    ]
+
+    print("\n--- DONNÉES À RISQUE ---")
+    print(f"Nombre de données sensibles : {len(sensibles)}")
+
+    for donnee in sensibles:
+        print(
+            f"- {donnee['heure']} | "
+            f"{donnee['type_donnee']} | "
+            f"{donnee['application']}"
+        )
+
+
+def calculer_score(donnees):
+    """
+    Calcule un score fictif de sensibilité.
+    Ce score sert uniquement à illustrer
+    le niveau d'exposition des données.
+    """
+
+    points = {
+        "faible": 1,
+        "moyenne": 2,
+        "élevée": 3
+    }
+
+    score = sum(
+        points.get(d["sensibilite"].lower(), 0)
+        for d in donnees
+    )
+
+    return score
+
+
+def afficher_recommandations(donnees):
+    print("\n" + "=" * 60)
+    print("              RECOMMANDATIONS")
+    print("=" * 60)
+
+    print("""
+1. Vérifier régulièrement les autorisations des applications.
+2. Désactiver la localisation lorsqu'elle n'est pas nécessaire.
+3. Utiliser l'authentification multifacteur.
+4. Maintenir le smartphone et les applications à jour.
+5. Éviter les réseaux Wi-Fi publics non sécurisés.
+6. Utiliser des mots de passe uniques et complexes.
+7. Limiter les applications ayant accès aux données personnelles.
+""")
+
+
+def main():
+    donnees = charger_donnees()
+
+    if not donnees:
+        return
+
+    afficher_resume(donnees)
+
+    score = calculer_score(donnees)
+
+    print("\n--- SCORE D'EXPOSITION ---")
+    print(f"Score obtenu : {score}")
+
+    if score <= 5:
+        print("Niveau : FAIBLE")
+    elif score <= 10:
+        print("Niveau : MODÉRÉ")
+    else:
+        print("Niveau : ÉLEVÉ")
+
+    afficher_recommandations(donnees)
+
+
+if __name__ == "__main__":
+    main()
 
 
 
