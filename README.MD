@@ -72,7 +72,7 @@ def build_markdown_report(feed_data):
             md += "_Aucun article récent récupéré._\n\n"
             continue
 
-        for item in articles[:4]:  # Top 4 par catégorie
+        for item in articles[:4]:
             md += f"- **[{item['title']}]({item['link']})**\n"
             if item.get("published"):
                 md += f"  <br>_Publié le : {item['published']}_\n"
@@ -80,7 +80,7 @@ def build_markdown_report(feed_data):
 
     md += "## 🛡️ Principaux Enjeux de Sécurité Identifiés\n\n"
     md += "- **Chiffrement de bout en bout** : Protéger la donnée de la capture au stockage.\n"
-    md += "- **Gestion des identités (IAM)** : Authentification forte pour éviter le détournement d'équipements (ex. botnets IoT type Mirai).\n"
+    md += "- **Gestion des identités (IAM)** : Authentification forte pour éviter le détournement d'équipements.\n"
     md += "- **Mises à jour (OTA)** : Sécuriser la chaîne de correctifs à distance contre les failles d'injection.\n"
     md += "- **Confidentialité & RGPD** : Garantir l'anonymisation des données personnelles collectées au quotidien.\n"
 
@@ -118,5 +118,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
