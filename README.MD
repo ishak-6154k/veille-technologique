@@ -25,142 +25,98 @@ recommandations de l'ANSSI pour préparer la migration des infrastructures
 (VPN, certificats SSL/TLS) vers des algorithmes dits « résistants au quantique ».
 ###
 
-import csv
-from collections import Counter
+import os
+from datetime import datetime
+import feedparser
 
-FICHIER = "donnees_quotidiennes.csv"
-
-
-def charger_donnees():
-    donnees = []
-
-    try:
-        with open(FICHIER, "r", encoding="utf-8") as fichier:
-            lecteur = csv.DictReader(fichier)
-
-            for ligne in lecteur:
-                donnees.append(ligne)
-
-    except FileNotFoundError:
-        print(f"Erreur : le fichier {FICHIER} est introuvable.")
-        return []
-
-    return donnees
+# Sources axées sur la transformation de la donnée IoT et les enjeux de sécurité
+RSS_FEEDS = {
+    "IoT & Data Transformation": [
+        "https://www.iotforall.com/feed",
+        "https://internetofthingsagenda.techtarget.com/rss/ContentSyndication.xml",
+    ],
+    "Sécurité & Cybermenaces IoT": [
+        "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+        "https://krebsonsecurity.com/feed/",
+    ],
+}
 
 
-def afficher_resume(donnees):
-    if not donnees:
-        return
+def build_markdown_report(feed_data):
+    """Génère le rapport de veille structuré au format Markdown."""
+    today = datetime.now().strftime("%Y-%m-%d")
 
-    print("\n" + "=" * 60)
-    print("       ANALYSE DES DONNÉES D'UN SMARTPHONE")
-    print("=" * 60)
+    md = f"# Veille Technologique — Transformation des Données IoT & Sécurité\n\n"
+    md += f"> **Dernière mise à jour automatique :** {today}\n\n"
 
-    print(f"\nNombre d'événements analysés : {len(donnees)}")
-
-    # Types de données
-    types = Counter(d["type_donnee"] for d in donnees)
-
-    print("\n--- TYPES DE DONNÉES COLLECTÉES ---")
-
-    for type_donnee, nombre in types.items():
-        print(f"{type_donnee:<25} : {nombre}")
-
-    # Applications
-    applications = Counter(d["application"] for d in donnees)
-
-    print("\n--- APPLICATIONS CONCERNÉES ---")
-
-    for application, nombre in applications.items():
-        print(f"{application:<25} : {nombre}")
-
-    # Niveau de sensibilité
-    sensibilite = Counter(d["sensibilite"] for d in donnees)
-
-    print("\n--- SENSIBILITÉ DES DONNÉES ---")
-
-    for niveau, nombre in sensibilite.items():
-        print(f"{niveau:<25} : {nombre}")
-
-    # Données sensibles
-    sensibles = [
-        d for d in donnees
-        if d["sensibilite"].lower() == "élevée"
-    ]
-
-    print("\n--- DONNÉES À RISQUE ---")
-    print(f"Nombre de données sensibles : {len(sensibles)}")
-
-    for donnee in sensibles:
-        print(
-            f"- {donnee['heure']} | "
-            f"{donnee['type_donnee']} | "
-            f"{donnee['application']}"
-        )
-
-
-def calculer_score(donnees):
-    """
-    Calcule un score fictif de sensibilité.
-    Ce score sert uniquement à illustrer
-    le niveau d'exposition des données.
-    """
-
-    points = {
-        "faible": 1,
-        "moyenne": 2,
-        "élevée": 3
-    }
-
-    score = sum(
-        points.get(d["sensibilite"].lower(), 0)
-        for d in donnees
+    md += "## 🎯 Problématique\n"
+    md += (
+        "*Comment les objets connectés transforment-ils les données du quotidien "
+        "en informations exploitables, et quels sont les enjeux de sécurité liés "
+        "à leur collecte ?*\n\n"
     )
 
-    return score
+    md += "## 📊 Synoptique de la Chaîne de Valeur Data IoT\n"
+    md += "| Étape | Mécanisme | Enjeu Sécurité Associé |\n"
+    md += "| :--- | :--- | :--- |\n"
+    md += "| **1. Collecte** | Capteurs bruts (température, pulsions, mouvement) | Interception, spoofing capteur |\n"
+    md += "| **2. Traitement Edge** | Filtrage local, agrégation à la source | Firmware non sécurisé, accès physique |\n"
+    md += "| **3. Transmission** | Protocoles légers (MQTT, CoAP, LoRaWAN) | Écoute clandestine (Eavesdropping), Man-in-the-Middle |\n"
+    md += "| **4. Analyse Cloud / IA** | Modèles prédictifs, data visualization | Fuite de données massives, non-conformité RGPD |\n\n"
+
+    md += "## 📰 Dernières Actualités et Analyses\n\n"
+
+    for category, articles in feed_data.items():
+        md += f"### {category}\n\n"
+        if not articles:
+            md += "_Aucun article récent récupéré._\n\n"
+            continue
+
+        for item in articles[:4]:  # Top 4 par catégorie
+            md += f"- **[{item['title']}]({item['link']})**\n"
+            if item.get("published"):
+                md += f"  <br>_Publié le : {item['published']}_\n"
+            md += "\n"
+
+    md += "## 🛡️ Principaux Enjeux de Sécurité Identifiés\n\n"
+    md += "- **Chiffrement de bout en bout** : Protéger la donnée de la capture au stockage.\n"
+    md += "- **Gestion des identités (IAM)** : Authentification forte pour éviter le détournement d'équipements (ex. botnets IoT type Mirai).\n"
+    md += "- **Mises à jour (OTA)** : Sécuriser la chaîne de correctifs à distance contre les failles d'injection.\n"
+    md += "- **Confidentialité & RGPD** : Garantir l'anonymisation des données personnelles collectées au quotidien.\n"
+
+    return md
 
 
-def afficher_recommandations(donnees):
-    print("\n" + "=" * 60)
-    print("              RECOMMANDATIONS")
-    print("=" * 60)
-
-    print("""
-1. Vérifier régulièrement les autorisations des applications.
-2. Désactiver la localisation lorsqu'elle n'est pas nécessaire.
-3. Utiliser l'authentification multifacteur.
-4. Maintenir le smartphone et les applications à jour.
-5. Éviter les réseaux Wi-Fi publics non sécurisés.
-6. Utiliser des mots de passe uniques et complexes.
-7. Limiter les applications ayant accès aux données personnelles.
-""")
+def fetch_feeds():
+    """Récupère les derniers articles depuis les flux RSS."""
+    results = {}
+    for category, urls in RSS_FEEDS.items():
+        results[category] = []
+        for url in urls:
+            feed = feedparser.parse(url)
+            for entry in feed.entries[:3]:
+                results[category].append(
+                    {
+                        "title": entry.get("title", "Sans titre"),
+                        "link": entry.get("link", "#"),
+                        "published": entry.get("published", ""),
+                    }
+                )
+    return results
 
 
 def main():
-    donnees = charger_donnees()
+    print("Récupération des données RSS...")
+    data = fetch_feeds()
+    report = build_markdown_report(data)
 
-    if not donnees:
-        return
+    with open("README.md", "w", encoding="utf-8") as f:
+        f.write(report)
 
-    afficher_resume(donnees)
-
-    score = calculer_score(donnees)
-
-    print("\n--- SCORE D'EXPOSITION ---")
-    print(f"Score obtenu : {score}")
-
-    if score <= 5:
-        print("Niveau : FAIBLE")
-    elif score <= 10:
-        print("Niveau : MODÉRÉ")
-    else:
-        print("Niveau : ÉLEVÉ")
-
-    afficher_recommandations(donnees)
+    print("README.md mis à jour avec succès !")
 
 
 if __name__ == "__main__":
     main()
-
 
 
