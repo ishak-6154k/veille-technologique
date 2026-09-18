@@ -211,4 +211,36 @@ L'objectif final est de sensibiliser les utilisateurs aux données qu'ils génè
 >
 > 🔐 La sécurité de ces données dépend donc à la fois des technologies utilisées et des bonnes pratiques de l'utilisateur.
 
+## 🔎 Sources utilisées pour ma veille
+
+Afin de suivre l'évolution de mon sujet **« Combien de choses votre téléphone sait-il sur vous en une seule journée ? »**, je consulte régulièrement plusieurs sources spécialisées. Elles me permettent de suivre les actualités concernant la collecte des données personnelles, la géolocalisation, les applications mobiles, les nouvelles vulnérabilités et les moyens de protéger les smartphones. Je privilégie notamment des sources officielles comme la CNIL et le CERT-FR, ainsi que les publications de sécurité des principaux systèmes mobiles.
+
+### Mes principales sources
+
+- **CNIL – Téléphones et applications**  
+  Conseils et actualités concernant les données personnelles, les applications mobiles et la protection de la vie privée.  
+  https://www.cnil.fr/fr/utiliser-votre-telephone-et-vos-applications
+
+- **CNIL – Géolocalisation et applications mobiles**  
+  Informations sur les données de localisation collectées par les smartphones et les moyens permettant de mieux les protéger.  
+  https://www.cnil.fr/fr/geolocalisation-applications-mobiles-proteger-vos-donnees
+
+- **CERT-FR – Menaces et incidents**  
+  Publication de rapports concernant les cybermenaces, vulnérabilités et incidents de sécurité. Cette source me permet notamment de suivre les menaces visant les téléphones mobiles.  
+  https://www.cert.ssi.gouv.fr/cti/
+
+- **CERT-FR – État de la menace sur les téléphones mobiles**  
+  Rapport consacré aux différentes menaces pouvant cibler les smartphones, notamment au niveau du Wi-Fi, du Bluetooth, des réseaux mobiles, des applications et du système d'exploitation.  
+  https://www.cert.ssi.gouv.fr/cti/CERTFR-2025-CTI-012/
+
+- **Apple Security Research**  
+  Actualités et recherches concernant la sécurité des iPhone, d'iOS et des technologies de protection développées par Apple.  
+  https://security.apple.com/
+
+### Pourquoi suivre ces sources ?
+
+Ces différentes sources me permettent de suivre régulièrement les nouvelles menaces et les évolutions concernant les smartphones. Elles me servent également à comprendre comment les données personnelles sont collectées et transmises, quelles vulnérabilités peuvent apparaître et quelles solutions sont mises en place pour améliorer leur sécurité.
+
+Cette recherche régulière me permet ainsi de faire évoluer ma veille et de conserver un lien direct avec les domaines étudiés en **BTS SIO SISR : réseaux, systèmes, cybersécurité, cloud et protection des données**.
+
 
