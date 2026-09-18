@@ -16,89 +16,203 @@
 depuis 3ans, je connais Word et un peu Excel. J'ai déjà crée le début d'un site.
 ####
 #### Projet Professionnel : BAC +5, Ingernieur en Cybersécurité ####
-## 📱 Présentation de ma veille technologique
 
-### « Combien de choses votre téléphone sait-il sur vous en une seule journée ? »
+## 1. Présentation du sujet
 
-Dans le cadre de ma veille technologique en BTS SIO SISR, j'ai choisi
-d'étudier les nombreuses données que nous générons quotidiennement
-à travers l'utilisation de notre smartphone.
+Dans le cadre de ma formation en BTS SIO, spécialité SISR
+(Solutions d'Infrastructure, Systèmes et Réseaux), j'ai choisi
+de réaliser une veille technologique autour d'un objet que nous
+utilisons tous les jours : le smartphone.
 
-Aujourd'hui, le téléphone portable est devenu un outil indispensable
-dans notre vie quotidienne. Nous l'utilisons pour communiquer,
-nous déplacer, regarder des vidéos, utiliser les réseaux sociaux,
-effectuer des achats, consulter nos comptes bancaires ou encore
-suivre notre activité physique.
+Mon sujet est le suivant :
 
-Toutes ces actions peuvent générer différentes catégories de données :
-la localisation, les connexions réseau, les habitudes d'utilisation,
-les recherches effectuées, les informations liées aux applications
-ou encore certaines données stockées dans le cloud.
+> « Combien de choses votre téléphone sait-il sur vous en une seule journée ? »
 
-L'objectif de cette veille est de comprendre ce qui se passe derrière
-ces usages quotidiens. Je cherche notamment à comprendre comment
-les données sont collectées, comment elles circulent entre le
-smartphone et les serveurs, où elles peuvent être stockées et quels
-sont les risques liés à leur protection.
+L'objectif de cette veille est de montrer qu'un smartphone ne sert
+pas uniquement à téléphoner ou à envoyer des messages. Il est également
+capable de générer, collecter, transmettre et stocker un grand nombre
+de données liées à notre utilisation quotidienne.
 
-Cette veille permet également d'étudier les différentes menaces
-qui peuvent viser les données personnelles, comme le phishing,
-les applications malveillantes, le vol de comptes, les fuites de
-données ou encore l'exploitation de vulnérabilités.
+Lorsque nous utilisons une application, recherchons une information,
+nous déplaçons avec notre téléphone, nous connectons à un réseau Wi-Fi
+ou utilisons un service en ligne, différentes informations peuvent
+être générées.
 
-Dans le domaine du SISR, cette problématique est particulièrement
-intéressante car elle fait intervenir plusieurs notions liées aux
-réseaux et à la cybersécurité : Wi-Fi, réseaux mobiles, adressage IP,
-DNS, chiffrement, serveurs, cloud, authentification et protection
-des données.
+Ces données peuvent concerner :
 
-Le but n'est donc pas seulement de savoir quelles informations
-notre téléphone peut connaître sur nous, mais également de comprendre
-comment ces informations sont transmises et quelles solutions peuvent
-être mises en place pour mieux les protéger.
+- notre localisation ;
+- nos connexions réseau ;
+- les applications utilisées ;
+- notre temps d'utilisation ;
+- nos recherches ;
+- certains paramètres de notre appareil ;
+- nos interactions avec les services en ligne ;
+- nos données synchronisées dans le cloud.
 
-### 🎯 Problématique
+Cette situation soulève donc plusieurs questions concernant la
+sécurité, la confidentialité et la protection des données personnelles.
 
-> Comment les smartphones collectent-ils, transmettent-ils et stockent-ils
-> les données de notre quotidien, et comment pouvons-nous les protéger ?
+---
 
-### 🔎 Objectifs de la veille
+# 2. Problématique
 
-- Identifier les principales données générées par un smartphone.
-- Comprendre comment ces données circulent sur les réseaux.
-- Étudier le rôle des applications et des services cloud.
-- Identifier les principales menaces liées aux données personnelles.
-- Découvrir les solutions permettant de sécuriser ces données.
-- Suivre les évolutions technologiques et les nouvelles vulnérabilités.
-- Sensibiliser les utilisateurs aux informations qu'ils partagent
-  quotidiennement sans forcément s'en rendre compte.
+La problématique principale de ma veille est :
 
-### 🌐 Axes de veille
+> Comment les smartphones collectent-ils, transmettent-ils et
+> stockent-ils les données de notre quotidien, et comment pouvons-nous
+> protéger ces données ?
 
-**Cybersécurité :**
-suivi des nouvelles menaces, vulnérabilités et techniques d'attaque
-visant les smartphones et les données personnelles.
+Cette problématique permet d'étudier le fonctionnement technique
+d'un smartphone tout en abordant les problématiques liées aux réseaux,
+au cloud et à la cybersécurité.
 
-**Réseaux :**
-étude de la manière dont les données sont transmises entre le
-smartphone, le réseau Wi-Fi ou mobile et les serveurs.
+---
 
-**Cloud :**
-étude du stockage, de la synchronisation et du traitement des données
-par les services cloud.
+# 3. Objectifs de ma veille
 
-**Données personnelles :**
-suivi des pratiques de collecte, de protection et de traitement
-des données générées par les utilisateurs.
+Cette veille technologique a plusieurs objectifs.
 
-### 💡 Question principale
+## Objectif 1 : Identifier les données générées
 
-Chaque jour, nous utilisons notre smartphone sans forcément penser
-aux traces numériques que nous laissons derrière nous.
+Je souhaite identifier les différents types de données pouvant être
+produits lors de l'utilisation quotidienne d'un smartphone.
 
-Cette veille cherche donc à répondre à une question simple :
+Par exemple :
 
-> **Si nous utilisons notre téléphone pendant une seule journée,
-> combien d'informations pouvons-nous réellement générer sur nous-mêmes ?**
+- localisation ;
+- informations réseau ;
+- utilisation des applications ;
+- données de navigation ;
+- données liées aux appareils connectés ;
+- données synchronisées ;
+- informations techniques.
+
+---
+
+## Objectif 2 : Comprendre la circulation des données
+
+Je souhaite comprendre comment une donnée passe du smartphone
+jusqu'au service utilisé.
+
+Par exemple :
+
+Smartphone
+     ↓
+Wi-Fi ou réseau mobile
+     ↓
+Routeur / opérateur
+     ↓
+Internet
+     ↓
+Serveur
+     ↓
+Application / Cloud
+
+Cette partie permet de faire le lien avec les connaissances étudiées
+en BTS SIO SISR.
+
+---
+
+## Objectif 3 : Identifier les risques
+
+Une donnée mal protégée peut représenter un risque pour son utilisateur.
+
+Je vais donc étudier plusieurs menaces :
+
+- phishing ;
+- vol de compte ;
+- logiciels malveillants ;
+- applications malveillantes ;
+- failles de sécurité ;
+- interception de communications ;
+- fuite de données ;
+- réseaux Wi-Fi non sécurisés ;
+- mots de passe compromis.
+
+---
+
+## Objectif 4 : Étudier les solutions de protection
+
+La veille doit également permettre d'identifier les moyens permettant
+de réduire les risques.
+
+Par exemple :
+
+- utiliser des mots de passe uniques ;
+- activer l'authentification multifacteur ;
+- effectuer les mises à jour ;
+- vérifier les permissions des applications ;
+- limiter l'accès à la localisation ;
+- éviter les réseaux Wi-Fi inconnus ;
+- utiliser des connexions sécurisées ;
+- sauvegarder correctement ses données.
+
+---
+
+# 4. Une journée avec son smartphone
+
+Pour rendre ma veille plus concrète, j'ai choisi de suivre une journée
+classique d'un utilisateur.
+
+L'objectif est de montrer que les données sont générées tout au long
+de la journée, parfois sans que l'utilisateur y prête attention.
+
+---
+
+## 07h30 — Réveil
+
+L'utilisateur se réveille et consulte son smartphone.
+
+Il peut :
+
+- consulter l'heure ;
+- regarder les notifications ;
+- consulter la météo ;
+- ouvrir ses réseaux sociaux ;
+- consulter ses messages.
+
+Certaines applications peuvent avoir accès à différentes autorisations
+selon leur fonctionnement et les réglages de l'utilisateur.
+
+### Données potentiellement concernées :
+
+- heure d'utilisation ;
+- application ouverte ;
+- connexion réseau ;
+- informations techniques de l'appareil.
+
+---
+
+## 08h00 — Déplacement
+
+L'utilisateur part au travail ou à l'école avec son smartphone.
+
+Il utilise éventuellement une application de navigation.
+
+Le téléphone peut alors utiliser des informations de localisation afin
+de fournir un itinéraire ou certaines fonctionnalités liées à la position.
+
+### Données potentiellement concernées :
+
+- position ;
+- itinéraire ;
+- heure de déplacement ;
+- réseau utilisé ;
+- informations liées à l'application.
+
+### Exemple :
+
+```text
+📱 Smartphone
+      |
+      | Position
+      ↓
+📡 Réseau mobile / Wi-Fi
+      |
+      ↓
+🌐 Internet
+      |
+      ↓
+☁️ Serveur de l'application
 
 
